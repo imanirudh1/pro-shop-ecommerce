@@ -9,7 +9,6 @@ function App() {
       <Header />
       <main>
         <Container className='py-3'>
-
           <h1>Welcome to Proshop</h1>
           <HomeScreen />
         </Container>
