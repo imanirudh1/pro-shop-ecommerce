@@ -5,16 +5,15 @@ import axios from 'axios'
 
 import Rating from '../component/Rating'
 const ProductScreen = ({ match }) => {
-
   const [product, setProducts] = useState([])
-    useEffect(() => {
-       const fetchProducts = async () => {
-            const { data } = await axios.get(`/api/products/${match.params.id}`)
-            setProducts(data)
-        }
-        fetchProducts()
-    },[match])
- 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`)
+      setProducts(data)
+    }
+    fetchProducts()
+  }, [match])
+
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>
@@ -60,7 +59,11 @@ const ProductScreen = ({ match }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Button className='btn-block' type='button' disabled={product.countInStock===0} >
+                  <Button
+                    className='btn-block'
+                    type='button'
+                    disabled={product.countInStock === 0}
+                  >
                     Add To Cart
                   </Button>
                 </Row>
