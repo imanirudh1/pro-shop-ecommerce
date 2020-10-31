@@ -15,7 +15,7 @@ const Loader = () => {
           <span className='sr-only'>Loading...</span>
     </Spinner>
   )
-  import { Spinner } from 'react-bootstrap'
+ 
 }
 
 export default Loader
