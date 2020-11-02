@@ -44,7 +44,9 @@ const CartScreen = ({ match, location, history }) => {
                       as='select'
                       value={item.qty}
                       onChange={(e) =>
-                        dispatch(addToCart(item.product, e.target.value))
+                        dispatch(
+                          addToCart(item.product, Number(e.target.value))
+                        )
                       }
                     >
                       {[...Array(item.countInStock).keys()].map((x) => (
@@ -71,7 +73,10 @@ const CartScreen = ({ match, location, history }) => {
         <Card>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2>Subtotal ({cartItems.reduce((acc,item)=>acc+item.qty,0)})</h2>
+              <h2>
+                Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+                items
+              </h2>
             </ListGroup.Item>
           </ListGroup>
         </Card>
