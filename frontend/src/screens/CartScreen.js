@@ -37,7 +37,7 @@ const CartScreen = ({ match, location, history }) => {
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  
+                  <Col ></Col>
                 </Row>
               </ListGroup.Item>
             ))}
