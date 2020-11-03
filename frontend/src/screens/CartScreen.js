@@ -31,7 +31,7 @@ const CartScreen = ({ match, location, history }) => {
   const removeFromCartHandeler = () => {}
 
   const checkoutHandeler = () => {
-    console.log(`checkout items`)
+    history.push('./login?redirect=shipping')
   }
 
   return (
