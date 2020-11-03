@@ -30,6 +30,7 @@ const CartScreen = ({ match, location, history }) => {
   }, [dispatch, productId, qty])
   const removeFromCartHandeler = () => {}
 
+  //if the user is logged in then the page will redirect to the shipping page
   const checkoutHandeler = () => {
     history.push('./login?redirect=shipping')
   }
