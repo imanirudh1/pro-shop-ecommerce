@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../component/Message'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
-import { addToCart } from '../action/cartActions'
+import { addToCart,removeFromCart } from '../action/cartActions'
 import { Link } from 'react-router-dom'
 const CartScreen = ({ match, location, history }) => {
 
@@ -28,7 +28,9 @@ const CartScreen = ({ match, location, history }) => {
       dispatch(addToCart(productId, qty))
     }
   }, [dispatch, productId, qty])
-  const removeFromCartHandeler = () => {}
+  const removeFromCartHandeler = (id) => {
+    dispatch(removeFromCart(id))
+  }
 
   //if the user is logged in then the page will redirect to the shipping page
   const checkoutHandeler = () => {
