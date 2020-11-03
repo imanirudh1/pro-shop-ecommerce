@@ -5,20 +5,35 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { addToCart } from '../action/cartActions'
 import { Link } from 'react-router-dom'
 const CartScreen = ({ match, location, history }) => {
+
+
+  //take product id from the url
   const productId = match.params.id
+  
+  //take no of items from the url and convert the string to number
   const qty = location.search ? Number(location.search.split('=')[1]) : 1
 
+  //create a dispatch variable so that we can trigger the action
   const dispatch = useDispatch()
+
+  //useSelector is used to grab the cart item from the store
   const cart = useSelector((state) => state.cart)
 
+  //using array destucture we takes cartitems
   const { cartItems } = cart
 
+  //in the use state if the product id is present then we simply add the item to cart
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty))
     }
   }, [dispatch, productId, qty])
   const removeFromCartHandeler = () => {}
+
+  const checkoutHandeler = () => {
+    console.log(`checkout items`)
+  }
+
   return (
     <Row>
       <Col md={8}>
@@ -81,6 +96,16 @@ const CartScreen = ({ match, location, history }) => {
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                type='button'
+                className='btn-block'
+                disabled={cartItems.length === 0}
+                onClick={checkoutHandeler}
+              >
+                Proceed To Checkout
+              </Button>
             </ListGroup.Item>
           </ListGroup>
         </Card>
