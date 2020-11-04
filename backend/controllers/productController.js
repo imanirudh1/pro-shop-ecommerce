@@ -1,4 +1,4 @@
-import Product from '../model/productModel.js'
+import Product from '../models/productModel.js'
 import asyncHandeler from 'express-async-handler'
 
 //@desc Fetch all Products
