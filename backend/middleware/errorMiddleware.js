@@ -4,12 +4,15 @@ const notFound = (req, res, next) => {
   next(error)
 }
 
-const errorHandeler = (err, req, res, next) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode
+const errorHandler = (err, req, res, next) => {
+  const statusCode = err.status === 200 ? 500 : res.statusCode
+
   res.status(statusCode)
+
   res.json({
     message: err.message,
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
   })
 }
-export {notFound,errorHandeler} 
+
+export { notFound, errorHandler }
