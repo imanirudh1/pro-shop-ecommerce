@@ -15,9 +15,9 @@ const app = express()
 
 app.use(express.json())
 
-// app.get('/', (req, res) => {
-//   res.send('API is running..')
-// })
+app.get('/', (req, res) => {
+  res.send('API is running..')
+})
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
@@ -28,7 +28,7 @@ app.use(errorHandler)
 const PORT = process.env.PORT || 5000
 
 app.listen(
-  PORT,
+  5000,
   console.log(
     `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
   )
