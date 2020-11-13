@@ -2,14 +2,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../component/Message'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
-import { addToCart,removeFromCart } from '../action/cartActions'
+import { addToCart, removeFromCart } from '../action/cartActions'
 import { Link } from 'react-router-dom'
 const CartScreen = ({ match, location, history }) => {
-
-
   //take product id from the url
   const productId = match.params.id
-  
+
   //take no of items from the url and convert the string to number
   const qty = location.search ? Number(location.search.split('=')[1]) : 1
 
@@ -34,7 +32,7 @@ const CartScreen = ({ match, location, history }) => {
 
   //if the user is logged in then the page will redirect to the shipping page
   const checkoutHandeler = () => {
-    history.push('./login?redirect=shipping')
+    history.push('/login?redirect=shipping')
   }
 
   return (
