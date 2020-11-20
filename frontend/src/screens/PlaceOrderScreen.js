@@ -50,7 +50,6 @@ const PlaceOrderScreen = ({ history }) => {
   ).toFixed(2)
   return (
     <>
-      {console.log(cart.cartItems)}
       <CheckoutSteps step1 step2 />
       <Row>
         <Col>
