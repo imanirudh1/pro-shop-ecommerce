@@ -4,7 +4,7 @@ import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../component/Message'
 import Loader from '../component/Loader'
-import { listProducts } from '../action/productAction'
+import { listProducts, deleteProduct } from '../action/productAction'
 
 const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -15,16 +15,25 @@ const ProductListScreen = ({ history, match }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const productDelete = useSelector((state) => state.productDelete)
+  const {
+    loading: loadingDelete,
+    success: successDelete,
+    error: errorDelete,
+  } = productDelete
+
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listProducts())
     } else {
       history.push('/login')
     }
-  }, [dispatch, history, userInfo])
+  }, [dispatch, history, userInfo, successDelete])
   const createProductHandler = (product) => {}
-  const deleteProduct = (id) => {
+
+  const deleteProductHandler = (id) => {
     if (window.confirm('Are You Sure')) {
+      dispatch(deleteProduct(id))
     }
   }
   return (
@@ -39,7 +48,8 @@ const ProductListScreen = ({ history, match }) => {
           </Button>
         </Col>
       </Row>
-
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -73,7 +83,7 @@ const ProductListScreen = ({ history, match }) => {
                   <Button
                     variant='danger'
                     className='btn-sm'
-                    onClick={() => deleteProduct(product._id)}
+                    onClick={() => deleteProductHandler(product._id)}
                   >
                     <i className='fas fa-trash'></i>
                   </Button>
