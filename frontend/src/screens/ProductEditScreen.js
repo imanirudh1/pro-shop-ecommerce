@@ -13,7 +13,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
   const [brand, setBrand] = useState('')
-  const [category, setcategory] = useState('')
+  const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
 
@@ -30,7 +30,7 @@ const ProductEditScreen = ({ match, history }) => {
       setPrice(product.price)
       setImage(product.image)
       setBrand(product.brand)
-      setcategory(product.category)
+      setCategory(product.category)
       setCountInStock(product.countInStock)
       setDescription(product.description)
     }
