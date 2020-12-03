@@ -38,7 +38,23 @@ function App() {
           <Route path='/register' component={RegisterScreen} />
           <Route path='/product/:id' component={ProductScreen} />
           <Route path='/cart/:id?' component={CartScreen} />
-          <Route path='/admin/productlist' component={ProductListScreen} />
+          <Route
+            exact
+            path='/admin/productlist/:pageNumber'
+            component={ProductListScreen}
+          />
+          <Route
+            exact
+            path='/admin/productlist'
+            component={ProductListScreen}
+          />
+          <Route path='/search/:keyword' component={HomeScreen} exact />
+          <Route
+            path='/search/:keyword/page/:pagenumber'
+            component={HomeScreen}
+            exact
+          />
+          <Route path='/page/:pageNumber' exact component={HomeScreen} />
           <Route path='/' exact component={HomeScreen} />
         </Container>
       </main>
